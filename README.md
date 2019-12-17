@@ -1,2 +1,13 @@
-# my_pet_page
-for memorizing every moments of my pet
+# My Pet Page
+
+### 1. 팀 정보
+
+| 팀원   | 업무 내용                                      |
+| ------ | ---------------------------------------------- |
+| 백민주 | Django 모델 구성, 데이터 수집 및 관리(API이용) |
+
+
+
+### 2. 데이터베이스 모델링(ERD)
+
+draw.io
