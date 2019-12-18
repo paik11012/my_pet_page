@@ -16,6 +16,8 @@ draw.io
 
 # 본격 프로젝트 시작
 
+
+
 ## 1. 가상환경 설정
 
 front, back폴더 만들고 back폴더에서
@@ -89,3 +91,60 @@ class Todo(models.Model):
         return self.title
 ```
 
+serializer.py
+
+```python
+from rest_framework import serializers
+from .models import Genre, Article, Item, User, Todo
+from django.contrib.auth import get_user_model
+User = get_user_model
+
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ['id', 'name']
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = ['id', 'genre', 'item_title', 'item_img', 'cost', 'brand', 'description', 'purchase_link', 'liked_users']
+
+class ArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'user', 'title', 'content', 'date', 'diary_img']
+
+class ArticleUpdateSerializer(ArticleSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'user', 'title', 'content', 'date', 'diary_img']
+
+class GenreDetailSerializer(GenreSerializer):
+    item = ItemSerializer(many=True)
+    class Meta(GenreSerializer.Meta):
+        fields = GenreSerializer.Meta.fields + ['movie', ]
+
+class TodoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Todo
+        fields = ['id', 'user', 'title']
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    liked_items = ItemSerializer(many=True)
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'liked_items', 'eng_name', 'pet_name', 'pet_img']
+        
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'password', 'email', 'liked_items', 'eng_name', 'pet_name', 'pet_img']
+```
+
+admin.py에 등록해서 django admin으로 관리할 수 있도록 설정
+
+urls.py
+
+
+
+views.py 설정
