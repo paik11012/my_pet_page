@@ -1,49 +1,3 @@
-# My Pet Page
-
-### 1. 팀 정보
-
-| 팀원   | 업무 내용                                      |
-| ------ | ---------------------------------------------- |
-| 백민주 | Django 모델 구성, 데이터 수집 및 관리(API이용) |
-
-도움을 준 사람: 공정배(readme 작성)
-
-### 2. 데이터베이스 모델링(ERD)
-
-draw.io
-
-
-
-# 본격 프로젝트 시작
-
-## 1. 가상환경 설정
-
-front, back폴더 만들고 back폴더에서
-
-```
-python -m venv venv  # 가상환경 만들기
-source venv/Scripts/activate  # 가상환경 잡기
-```
-
-```
-pip list
-pip install django
-```
-
-## 2. Django Modeling
-
-MTV 모델 이용하는 장고(model, template, view)
-
-```
-$ django-admin startproject lovelyfriends .
-$ python manage.py startapp memories
-```
-
-프로젝트랑 앱 시작, 기본 셋팅하기
-
-models.py
-
-```
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
@@ -78,5 +32,3 @@ class Article(models.Model):
     date = models.DateField()
     def __str__(self):
         return self.title
-```
-
