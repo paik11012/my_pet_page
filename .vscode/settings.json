@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\student\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "python.pythonPath": "C:\\Users\\student\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
     "files.associations": {
         "**/templates/*.html": "django-html",
         "**/templates/*": "django-txt",
