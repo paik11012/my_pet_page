@@ -43,21 +43,17 @@ def genredetail(request, genre_pk):
 
 @api_view(['GET'])
 def articlelist(request):
-    article = Article.objects.all()
-    serializer = ArticleSerializer(article)
+    articles = Article.objects.all()
+    serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data)
 
-<<<<<<< HEAD
-def articledetail(request, article_pk):
-    pass
-=======
 @api_view(['GET'])
 def articledetail(request, article_pk):
-    article = Article.get_object_or_404(Article, article_pk)
+    article = get_object_or_404(Article, pk=article_pk)
     if request.method == 'GET':
-        serializer = ArticleSerializer(Article)
+        serializer = ArticleSerializer(article)  # many같은것 모르겠음
         return Response(serializer.data)
->>>>>>> f11fea3ed668d762ea65625cf0c80bc575d31072
+
 
 @api_view(['POST'])
 def create(request):
@@ -68,19 +64,15 @@ def create(request):
 
 @api_view(['PUT', 'DELETE'])
 def update(request, article_pk):
-    article = get_object_or_404(Article, article_pk)
+    article = get_object_or_404(Article, pk=article_pk)
     if request.method == 'PUT':
-        serializer = ArticleUpdateSerializer(data=request.data, instance=True)
+        serializer = ArticleUpdateSerializer(data=request.data, instance=article)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
-            return Response({'message':'글 수정'})
+            return Response(serializer.data)
     else:  # delete면
         article.delete()
-<<<<<<< HEAD
         return Response({'message':'글'})
-=======
-        return Response({'message':'글 삭제'})
->>>>>>> f11fea3ed668d762ea65625cf0c80bc575d31072
 
 
 def userdetail(request, user_pk):

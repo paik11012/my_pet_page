@@ -145,9 +145,6 @@ admin.py에 등록해서 django admin으로 관리할 수 있도록 설정
 
 urls.py
 
-<<<<<<< HEAD
-
-=======
 ```python
 	# todo관련
     path('todos/', views.todo_create),
@@ -164,6 +161,13 @@ urls.py
     # user관련
     path('userdetail/<int:user_pk>/', views.userdetail),
 ```
->>>>>>> f11fea3ed668d762ea65625cf0c80bc575d31072
-
 views.py 설정
+
+
+
+## 3. FRONT 만들기
+
+```
+
+```
+
