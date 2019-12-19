@@ -47,8 +47,17 @@ def articlelist(request):
     serializer = ArticleSerializer(article)
     return Response(serializer.data)
 
+<<<<<<< HEAD
 def articledetail(request, article_pk):
     pass
+=======
+@api_view(['GET'])
+def articledetail(request, article_pk):
+    article = Article.get_object_or_404(Article, article_pk)
+    if request.method == 'GET':
+        serializer = ArticleSerializer(Article)
+        return Response(serializer.data)
+>>>>>>> f11fea3ed668d762ea65625cf0c80bc575d31072
 
 @api_view(['POST'])
 def create(request):
@@ -67,7 +76,11 @@ def update(request, article_pk):
             return Response({'message':'글 수정'})
     else:  # delete면
         article.delete()
+<<<<<<< HEAD
         return Response({'message':'글'})
+=======
+        return Response({'message':'글 삭제'})
+>>>>>>> f11fea3ed668d762ea65625cf0c80bc575d31072
 
 
 def userdetail(request, user_pk):

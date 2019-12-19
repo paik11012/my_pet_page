@@ -145,6 +145,25 @@ admin.py에 등록해서 django admin으로 관리할 수 있도록 설정
 
 urls.py
 
+<<<<<<< HEAD
 
+=======
+```python
+	# todo관련
+    path('todos/', views.todo_create),
+    path('todos/<int:todo_id>/', views.todo_delete),
+    # item관련(수정, 삭제는 나아중에 추가)
+    path('itemlist/', views.itemlist),
+    path('genrelist/', views.genrelist),
+    path('genredetail/<int:genre_pk>/', views.genredetail),
+    # article관련
+    path('articlelist', views.articlelist),
+    path('articledetail/<int:article_pk>/', views.articledetail),
+    path('create/', views.create),
+    path('update/<int:article_pk>/', views.update),
+    # user관련
+    path('userdetail/<int:user_pk>/', views.userdetail),
+```
+>>>>>>> f11fea3ed668d762ea65625cf0c80bc575d31072
 
 views.py 설정
